@@ -1,0 +1,29 @@
+---
+const { Nom, email, comentari, Id } = Astro.props.dades;
+//console.log(descripcio)
+---
+
+<div class="border mb-8 w-1/2 p-8 bg-white">
+    <h1 class="text-xl font-bold text-center">{Nom}</h1>
+
+    <hr class="my-4" />
+    <h2>ID: {Id}</h2>
+    <h2>Email: {email}</h2>
+    <h2>Comentari: {comentari}</h2>
+    
+
+    <a href={"/todos/eliminar/" + Id}>
+        <button
+            class="bg-red-500 hover:bg-red-700 text-white py-1 px-2 text-sm rounded "
+        >
+            Eliminar
+        </button>
+    </a>
+    <a href={"/todos/update/" + Id}>
+        <button
+            class="bg-red-500 hover:bg-red-700 text-white py-1 px-2 text-sm rounded "
+        >
+            Actualitzar
+        </button>
+    </a>
+</div>

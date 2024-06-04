@@ -1,0 +1,51 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TodosController from "../classes/TodosController"
+import ToDo from "../components/ToDo.astro";
+// Exemple d'ús:
+
+const todosController = new TodosController();
+
+const items = await todosController.getAll();
+
+
+
+/* todos té el format:
+{
+    list: [
+      {
+        Id: 1,
+        nom: 'ous amb bacon',
+        CreatedAt: '2024-02-01 09:44:44+00:00',
+        UpdatedAt: '2024-02-01 09:46:32+00:00',
+        foto: 'https://baconmockup.com/400/300/',
+        descripcio: 'Ingredients..."
+      },
+	  {
+		...
+	  }
+         ],
+    pageInfo: {
+      totalRows: 2,
+      page: 1,
+      pageSize: 25,
+      isFirstPage: true,
+      isLastPage: true
+    }
+  }
+*/
+---
+
+<Layout title="Index" >
+
+  <a href="/todos/create" >
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Nou TO-DO
+    </button>
+</a>
+
+
+
+  <hr />
+  {items?.list.map((e) => <ToDo dades={e} />)}
+</Layout>
